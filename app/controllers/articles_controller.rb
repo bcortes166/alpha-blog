@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   def create
 #    render plain: params[:article].inspect  to check for params in webbrowser
     @article = Article.new(article_params)
+    @article.user = User.first
     if @article.save
       flash[:success] = "Article succesfully created"
       redirect_to article_path(@article)
